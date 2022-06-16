@@ -82,10 +82,11 @@ const uploadAvatar = async (req, res, next) => {
       // }
     // }
     // await Students.findByIdAndUpdate(req.params.id, {avatar : response.url}, { userFindModify: false })
-    res.status(200).json({
-      msg: "usuario actualizado",
-      // response
-    });
+    // res.status(200).json({
+    //   msg: "usuario actualizado",
+    //   // response
+    // });
+    res.sendFile(path.join(__dirname,'../files/' + req.file.filename))
   } catch (error) {
     next(error)
   }
