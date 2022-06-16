@@ -86,7 +86,7 @@ const uploadAvatar = async (req, res, next) => {
       msg: "usuario actualizado",
       response
     });
-    res.sendFile(path.join(__dirname,'../files/' + req.file.filename))
+    // res.sendFile(path.join(__dirname,'../files/' + req.file.filename))
   } catch (error) {
     next(error)
   }
