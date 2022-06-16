@@ -30,7 +30,7 @@ const fileUpload = require("express-fileupload")
 
 //----------------------------------------- END OF IMPORTS---------------------------------------------------
 mongoose.connect(
-  "mongodb+srv://AulaVirtual2022:nocountryvirtual@aulavirtual.9kdbn.mongodb.net/test" || 'mongodb://localhost/mern_youtube',
+  process.env.DB_MONGO || 'mongodb://localhost/mern_youtube',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -50,7 +50,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "http://localhost:3000", // <-- location of the react app were connecting to
+    origin: process.env.HOST_FRONT, // <-- location of the react app were connecting to
     credentials: true,
   })
 );
