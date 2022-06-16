@@ -72,18 +72,19 @@ const editStudents = async (req, res, next) => {
 
 const uploadAvatar = async (req, res, next) => {
   try {
-    let response = await imgbbUploader(process.env.API_KEY_IMGBB, path.join(__dirname, `../files/${req.file.filename}`))
-    if(response){
-      if (fs.existsSync('./files/' + req.file.filename) && req.file.filename !== "default-image.png") {
-        fs.unlinkSync(`./files/${req.file.filename}`)
-      } else {
-        console.log('no se encontro el archivo')
-      }
-    }
-    await Students.findByIdAndUpdate(req.params.id, {avatar : response.url}, { userFindModify: false })
+    // let response = await imgbbUploader(process.env.API_KEY_IMGBB, path.join(__dirname, `../files/${req.file.filename}`))
+    // if(response){
+      console.log(fs.existsSync(path.join(__dirname, '../files/' + req.file.filename)))
+      // if (fs.existsSync('./files/' + req.file.filename) && req.file.filename !== "default-image.png") {
+      //   fs.unlinkSync(`./files/${req.file.filename}`)
+      // } else {
+      //   console.log('no se encontro el archivo')
+      // }
+    // }
+    // await Students.findByIdAndUpdate(req.params.id, {avatar : response.url}, { userFindModify: false })
     res.status(200).json({
       msg: "usuario actualizado",
-      response
+      // response
     });
   } catch (error) {
     next(error)
